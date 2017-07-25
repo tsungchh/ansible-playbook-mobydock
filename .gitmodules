@@ -1,0 +1,15 @@
+[submodule "roles/dockers"]
+	path = roles/dockers
+	url = https://github.com/tsungchh/docker_ansibleRole.git
+[submodule "roles/nginx"]
+	path = roles/nginx
+	url = https://github.com/tsungchh/nginx_ansibleRole.git
+[submodule "roles/postgres"]
+	path = roles/postgres
+	url = https://github.com/tsungchh/postgres_ansibleRole.git
+[submodule "roles/redis"]
+	path = roles/redis
+	url = https://github.com/tsungchh/redis_ansibleRole.git
+[submodule "roles/testApp"]
+	path = roles/testApp
+	url = https://github.com/tsungchh/testApp_ansibleRole.git
