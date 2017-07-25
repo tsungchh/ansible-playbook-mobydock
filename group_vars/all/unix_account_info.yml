@@ -1,0 +1,4 @@
+---
+unix_user: testuser
+host_ip: "45.55.66.187"
+pubkey_file: "/Users/hsutsungchun/.ssh/id_rsa.pub"

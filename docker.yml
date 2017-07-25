@@ -1,0 +1,8 @@
+---
+- hosts: cloud
+  remote_user: {{ unix_user }}
+  become: yes
+  become_method: sudo
+  roles:
+  - role: dockers
+      unix_user: "{{ unix_user }}"

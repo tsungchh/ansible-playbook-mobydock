@@ -1,0 +1,7 @@
+---
+- hosts: cloud
+  remote_user: tsungchh
+  become: yes
+  become_method: sudo
+  roles:
+  - role: postgres

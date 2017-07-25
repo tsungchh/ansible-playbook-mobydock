@@ -1,0 +1,9 @@
+---
+- hosts: cloud
+  remote_user: tsungchh
+  become: yes
+  become_method: sudo
+  roles:
+  - role: testApp
+    user: "{{ unix_user }}"
+  

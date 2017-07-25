@@ -1,0 +1,11 @@
+ansible --list-hosts all
+ansible -i dev --list-hosts all
+
+~/.ansible.cfg
+
+ansible --list-hosts "*" 
+ansible -m ping all
+
+ansible-playbook playbooks/hostname.yml
+
+

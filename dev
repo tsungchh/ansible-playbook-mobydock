@@ -1,0 +1,8 @@
+[control]
+control_machine ansible_connection=local
+
+[cloud_root]
+dgocean_2
+
+[cloud]
+dgocean_2 ansible_ssh_user=testuser

@@ -1,0 +1,52 @@
+- hosts: cloud_root
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: apt-get -y install python-simplejson
+      become: yes
+      become_method: "sudo"
+
+  tasks:
+  - name: Update apt cache
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+    become: yes
+    become_method: "sudo"
+  
+  - group: name=sudo state=present
+
+  - name: Add deployer user and add it to sudo
+    user: 
+      name: "{{unix_user}}"
+      state: present
+      createhome: yes
+      groups: sudo
+      shell: /bin/bash
+    become: yes
+    become_method: "sudo"
+
+  - name: Set up authorized keys for the deployer user
+    authorized_key: user={{unix_user}} key="{{item}}"
+    with_file:
+      - {{ pubkey_file }} #specify user's pub key
+
+  # Validate the sudoers file before saving todo
+  - lineinfile:
+      path: /etc/sudoers
+      state: present
+      regexp: '^%sudo'
+      line: '%sudo   ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
+    become: yes
+    become_method: "sudo"
+
+  - name: install python components
+    apt: name={{item}} state=present update_cache=yes
+    with_items:
+      - python-pip
+    become: yes
+    become_method: "sudo"
+
+  
