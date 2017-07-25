@@ -30,7 +30,7 @@
   - name: Set up authorized keys for the deployer user
     authorized_key: user={{unix_user}} key="{{item}}"
     with_file:
-      - {{ pubkey_file }} #specify user's pub key
+      - "{{ pubkey_file }}" #specify user's pub key
 
   # Validate the sudoers file before saving todo
   - lineinfile:
